@@ -16,8 +16,11 @@ import jakarta.transaction.Transactional;
 @Transactional
 public class ProdukServices {
     
-    @Autowired
-    private ProdukRepo produkRepo;
+    private final ProdukRepo produkRepo;
+
+    public ProdukServices(ProdukRepo produkRepo) {
+        this.produkRepo = produkRepo;
+    }
 
     public Produk save_update(Produk produk){
         return produkRepo.save(produk);

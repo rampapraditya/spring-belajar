@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.belajar.model.entities.Produk;
@@ -23,8 +22,11 @@ import com.belajar.services.ProdukServices;
 @RequestMapping("/api/produk")
 public class ProdukController {
 
-    @Autowired
-    private ProdukServices produkServices;
+    private final ProdukServices produkServices;
+
+    public ProdukController(ProdukServices produkServices) {
+        this.produkServices = produkServices;
+    }
 
     // 1. Create atau Update Produk (POST)
     @PostMapping
